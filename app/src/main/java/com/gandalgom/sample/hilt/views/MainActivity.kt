@@ -1,4 +1,4 @@
-package com.gandalgom.sample.hilt.ui
+package com.gandalgom.sample.hilt.views
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

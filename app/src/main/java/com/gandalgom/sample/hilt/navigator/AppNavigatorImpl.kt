@@ -1,8 +1,8 @@
 package com.gandalgom.sample.hilt.navigator
 
 import androidx.fragment.app.FragmentActivity
-import com.gandalgom.sample.hilt.ui.ButtonsFragment
-import com.gandalgom.sample.hilt.ui.LogsFragment
+import com.gandalgom.sample.hilt.views.ButtonsFragment
+import com.gandalgom.sample.hilt.views.LogsFragment
 import com.gandalgom.sample.hilt.R
 
 class AppNavigatorImpl(private val activity: FragmentActivity): AppNavigator {
