@@ -1,6 +1,5 @@
 package com.gandalgom.sample.hilt.views
 
-import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -8,17 +7,19 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
-import com.gandalgom.sample.hilt.LogApplication
 import com.gandalgom.sample.hilt.R
 import com.gandalgom.sample.hilt.database.Log
 import com.gandalgom.sample.hilt.database.LoggerLocalDataSource
 import com.gandalgom.sample.hilt.util.DateFormatter
 
+@AndroidEntryPoint
 class LogsFragment : Fragment() {
 
-    private lateinit var logger: LoggerLocalDataSource
-    private lateinit var dateFormatter: DateFormatter
+    @Inject lateinit var logger: LoggerLocalDataSource
+    @Inject lateinit var dateFormatter: DateFormatter
 
     private lateinit var recyclerView: RecyclerView
     override fun onCreateView(
@@ -33,17 +34,6 @@ class LogsFragment : Fragment() {
         recyclerView = view.findViewById<RecyclerView?>(R.id.recycler_view).apply {
             setHasFixedSize(true)
         }
-    }
-
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        populateFields(context)
-    }
-
-    private fun populateFields(context: Context) {
-        val serviceLocator = (context.applicationContext as LogApplication).serviceLocator
-        logger = serviceLocator.loggerLocalDataSource
-        dateFormatter = serviceLocator.provideDateFormatter()
     }
 
     override fun onResume() {
