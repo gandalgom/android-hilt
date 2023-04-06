@@ -1,24 +1,34 @@
 package com.gandalgom.sample.hilt.views
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import androidx.activity.OnBackPressedCallback
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
 import com.gandalgom.sample.hilt.R
-import com.gandalgom.sample.hilt.database.LoggerLocalDataSource
+import com.gandalgom.sample.hilt.database.LoggerDataSource
+import com.gandalgom.sample.hilt.di.InMemoryLogger
 import com.gandalgom.sample.hilt.navigator.AppNavigator
 import com.gandalgom.sample.hilt.navigator.Screens
 
 @AndroidEntryPoint
 class ButtonsFragment : Fragment() {
 
-    @Inject lateinit var logger: LoggerLocalDataSource
+    @InMemoryLogger
+    @Inject lateinit var logger: LoggerDataSource
     @Inject lateinit var navigator: AppNavigator
+
+    private val callback = object : OnBackPressedCallback(true) {
+        override fun handleOnBackPressed() {
+           requireActivity().finish()
+        }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -46,5 +56,15 @@ class ButtonsFragment : Fragment() {
         view.findViewById<Button>(R.id.delete_logs).setOnClickListener {
             logger.removeLogs()
         }
+    }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        requireActivity().onBackPressedDispatcher.addCallback(this, callback)
+    }
+
+    override fun onDetach() {
+        callback.remove()
+        super.onDetach()
     }
 }

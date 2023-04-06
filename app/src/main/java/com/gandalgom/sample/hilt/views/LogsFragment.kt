@@ -12,13 +12,15 @@ import javax.inject.Inject
 
 import com.gandalgom.sample.hilt.R
 import com.gandalgom.sample.hilt.database.Log
-import com.gandalgom.sample.hilt.database.LoggerLocalDataSource
+import com.gandalgom.sample.hilt.database.LoggerDataSource
+import com.gandalgom.sample.hilt.di.InMemoryLogger
 import com.gandalgom.sample.hilt.util.DateFormatter
 
 @AndroidEntryPoint
 class LogsFragment : Fragment() {
 
-    @Inject lateinit var logger: LoggerLocalDataSource
+    @InMemoryLogger
+    @Inject lateinit var logger: LoggerDataSource
     @Inject lateinit var dateFormatter: DateFormatter
 
     private lateinit var recyclerView: RecyclerView
