@@ -7,6 +7,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 import com.gandalgom.sample.hilt.LogApplication
 import com.gandalgom.sample.hilt.R
@@ -14,9 +16,10 @@ import com.gandalgom.sample.hilt.database.LoggerLocalDataSource
 import com.gandalgom.sample.hilt.navigator.AppNavigator
 import com.gandalgom.sample.hilt.navigator.Screens
 
+@AndroidEntryPoint
 class ButtonsFragment : Fragment() {
 
-    private lateinit var logger: LoggerLocalDataSource
+    @Inject lateinit var logger: LoggerLocalDataSource
     private lateinit var navigator: AppNavigator
 
     override fun onCreateView(
@@ -34,7 +37,6 @@ class ButtonsFragment : Fragment() {
 
     private fun populateFields(context: Context) {
         val serviceLocator = (context.applicationContext as LogApplication).serviceLocator
-        logger = serviceLocator.loggerLocalDataSource
         navigator = serviceLocator.provideNavigator(requireActivity())
     }
 
