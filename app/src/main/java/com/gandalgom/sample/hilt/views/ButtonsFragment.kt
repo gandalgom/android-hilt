@@ -12,7 +12,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
 import com.gandalgom.sample.hilt.R
-import com.gandalgom.sample.hilt.database.LoggerDataSource
+import com.gandalgom.sample.hilt.database.datasource.LoggerDataSource
 import com.gandalgom.sample.hilt.di.InMemoryLogger
 import com.gandalgom.sample.hilt.navigator.AppNavigator
 import com.gandalgom.sample.hilt.navigator.Screens

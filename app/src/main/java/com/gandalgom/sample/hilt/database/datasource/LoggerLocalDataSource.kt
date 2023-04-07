@@ -1,7 +1,9 @@
-package com.gandalgom.sample.hilt.database
+package com.gandalgom.sample.hilt.database.datasource
 
 import android.os.Handler
 import android.os.Looper
+import com.gandalgom.sample.hilt.database.Log
+import com.gandalgom.sample.hilt.database.LogDao
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 import javax.inject.Inject

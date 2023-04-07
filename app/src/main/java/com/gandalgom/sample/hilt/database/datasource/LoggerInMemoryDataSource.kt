@@ -1,5 +1,6 @@
-package com.gandalgom.sample.hilt.database
+package com.gandalgom.sample.hilt.database.datasource
 
+import com.gandalgom.sample.hilt.database.Log
 import dagger.hilt.android.scopes.ActivityScoped
 import java.util.LinkedList
 import javax.inject.Inject

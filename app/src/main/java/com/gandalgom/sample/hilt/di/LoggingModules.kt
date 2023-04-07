@@ -9,9 +9,9 @@ import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 import javax.inject.Qualifier
 
-import com.gandalgom.sample.hilt.database.LoggerDataSource
-import com.gandalgom.sample.hilt.database.LoggerInMemoryDataSource
-import com.gandalgom.sample.hilt.database.LoggerLocalDataSource
+import com.gandalgom.sample.hilt.database.datasource.LoggerDataSource
+import com.gandalgom.sample.hilt.database.datasource.LoggerInMemoryDataSource
+import com.gandalgom.sample.hilt.database.datasource.LoggerLocalDataSource
 
 @Qualifier
 annotation class InMemoryLogger
